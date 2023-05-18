@@ -1,0 +1,68 @@
+{
+  "provider": {
+    "name": "advance-adapter-backend"
+  },
+  "consumer": {
+    "name": "onboarding-backend"
+  },
+  "interactions": [
+    {
+      "description": "a request to directly link the buyer and supplier organisations",
+      "request": {
+        "method": "PUT",
+        "path": "/companies/ZC6789",
+        "headers": {
+          "X-Test-UserCode": "ZU1234"
+        },
+        "body": {
+          "requestId": "a99230ec-f61d-41d3-a84d-ce472a0f241a",
+          "englishName": "Some Org",
+          "localName": "Le Some Org",
+          "businessLicenseNumber": "0987654321",
+          "businessLicenseExpiration": "2025-12-25",
+          "address": {
+            "line1": "Address Line 1",
+            "line2": "Address Line 2",
+            "postCode": "AB12 C34",
+            "city": "City",
+            "country": "GB"
+          },
+          "telephone": "0791234567890",
+          "email": "someone@example.com",
+          "billingAddress": {
+            "address": {
+              "line1": "Billing Address Line 1",
+              "line2": "Billing Address Line 2",
+              "postCode": "DE56 F78",
+              "city": "City",
+              "country": "GB"
+            },
+            "contactName": "Contact"
+          },
+          "vatNumber": "1234567890",
+          "smdEnrollStatus": "OPTED_IN",
+          "membershipStatus": "ACTIVE",
+          "subscriptionType": "ST002",
+          "primaryIndustryClassificationCode": "ZIC1000000",
+          "secondaryIndustryClassificationCode": "ZIC1000100"
+        }
+      },
+      "response": {
+        "status": 200
+      },
+      "providerStates": [
+        {
+          "name": "a company is updated"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.1.15"
+    }
+  }
+}

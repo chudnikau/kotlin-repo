@@ -1,0 +1,19 @@
+{
+  "code": "ZC12345",
+  "updatedTime": "2022-08-09T09:00:00Z",
+  "englishName": "My Company",
+  "address": {
+    "line1": "Somewhere",
+    "postCode": "AB12 3CD",
+    "city": "London",
+    "country": "GB"
+  },
+  "telephone": "07123456789",
+  "email": "email@example.com",
+  "smdEnrollStatus": "OPTED_IN",
+  "membershipStatus": "NEW",
+  "subscriptionType": "ST003",
+  "primaryIndustryClassificationCode": "ZIC1000000",
+  "secondaryIndustryClassificationCode": "ZIC1000100",
+  "lastModifiedAt": "2022-08-09T09:00:00Z"
+}

@@ -1,0 +1,70 @@
+{
+  "consumer": {
+    "name": "company-backend"
+  },
+  "interactions": [
+    {
+      "description": "a request to look up organisation contacts",
+      "providerStates": [
+        {
+          "name": "STATE: user with sedex code ZU12345 exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/organisation/contacts/ZC14567"
+      },
+      "response": {
+        "body": {
+          "contacts": [
+            {
+              "emailAddress": "bob@jones@email.com",
+              "firstName": "Bob",
+              "lastName": "Jones",
+              "preferredLanguage": "en",
+              "userCode": "ZU12345"
+            }
+          ]
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to look up organisation contacts from company service",
+      "providerStates": [
+        {
+          "name": "STATE: user with sedex code ZU12345 exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/organisation/contacts/ZC14567"
+      },
+      "response": {
+        "body": {
+          "contacts": [
+            {
+              "emailAddress": "bob@jones@email.com",
+              "firstName": "Bob",
+              "lastName": "Jones",
+              "preferredLanguage": "en",
+              "userCode": "ZU12345"
+            }
+          ]
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.3.18"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "user-backend"
+  }
+}

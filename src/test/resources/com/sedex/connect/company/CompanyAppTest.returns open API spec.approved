@@ -1,0 +1,2035 @@
+{
+  "info": {
+    "title": "company API",
+    "version": "v1.0",
+    "description": "OpenApi spec for the company"
+  },
+  "tags": [
+  ],
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/all-companies": {
+      "post": {
+        "summary": "Gets companies",
+        "description": "Gets companies",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": [
+                "ZC1",
+                "ZC2"
+              ],
+              "schema": {
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "ZC1",
+                  "ZC2"
+                ],
+                "type": "array"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ZC1234": {
+                    "code": "ZC1234",
+                    "isUpdatedByConnect": true,
+                    "englishName": "My Company",
+                    "localName": "Local company name",
+                    "address": {
+                      "line1": "Somewhere",
+                      "postCode": "AB12 3CD",
+                      "city": "London",
+                      "country": "GB"
+                    },
+                    "telephone": "07123456789",
+                    "email": "email@example.com",
+                    "smdEnrollStatus": "OPTED_IN",
+                    "subscriptionType": "ST002",
+                    "primaryIndustryClassificationCode": "ZIC1000000",
+                    "secondaryIndustryClassificationCode": "ZIC1000100"
+                  }
+                },
+                "schema": {
+                  "additionalProperties": {
+                    "properties": {
+                      "ZC1234": {
+                        "$ref": "#/components/schemas/CompanyResponse"
+                      }
+                    },
+                    "example": {
+                      "ZC1234": {
+                        "code": "ZC1234",
+                        "isUpdatedByConnect": true,
+                        "englishName": "My Company",
+                        "localName": "Local company name",
+                        "address": {
+                          "line1": "Somewhere",
+                          "postCode": "AB12 3CD",
+                          "city": "London",
+                          "country": "GB"
+                        },
+                        "telephone": "07123456789",
+                        "email": "email@example.com",
+                        "smdEnrollStatus": "OPTED_IN",
+                        "subscriptionType": "ST002",
+                        "primaryIndustryClassificationCode": "ZIC1000000",
+                        "secondaryIndustryClassificationCode": "ZIC1000100"
+                      }
+                    },
+                    "type": "object",
+                    "required": [
+                      "ZC1234"
+                    ]
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AnyLoggedInUserSecurity": [
+            ]
+          }
+        ],
+        "operationId": "postAll_companies",
+        "deprecated": false
+      }
+    },
+    "/audit-companies": {
+      "get": {
+        "summary": "Get all audit companies",
+        "description": "Get all audit companies",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  "ZC001",
+                  "ZC002"
+                ],
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "ZC001",
+                    "ZC002"
+                  ],
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "getAudit_companies",
+        "deprecated": false
+      }
+    },
+    "/companies/address/exists": {
+      "get": {
+        "summary": "Checks if a company exists with given name",
+        "description": "Checks if a company exists with given name",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "line1",
+            "required": true,
+            "description": "Address line 1"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "city",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postcode",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "exists": true
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ExistsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "getCompaniesAddressExists",
+        "deprecated": false
+      }
+    },
+    "/companies/exists/name/{companyName}": {
+      "get": {
+        "summary": "Checks if a company exists with given name",
+        "description": "Checks if a company exists with given name",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "orgCode",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "companyName",
+            "required": true,
+            "description": "Company Name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "exists": true
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ExistsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "getCompaniesExistsName_companyName",
+        "deprecated": false
+      }
+    },
+    "/companies/exists/{orgCode}": {
+      "get": {
+        "summary": "Checks if a company exists with given org code",
+        "description": "Checks if a company exists with given org code",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "exists": true
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ExistsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "getCompaniesExists_orgCode",
+        "deprecated": false
+      }
+    },
+    "/companies/reseed/all": {
+      "post": {
+        "summary": "Sends all companies to kafka",
+        "description": "Sends all companies to kafka",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+            }
+          }
+        },
+        "security": [
+          {
+            "SedexAdminSecurity": [
+            ]
+          }
+        ],
+        "operationId": "postCompaniesReseedAll",
+        "deprecated": false
+      }
+    },
+    "/companies/search/{searchTerm}": {
+      "get": {
+        "summary": "Searches company by search term",
+        "description": "Searches company by search term",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "searchTerm",
+            "required": true,
+            "description": "Search term"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "code": "ZC1234",
+                    "englishName": "My Company",
+                    "subscriptionType": "ST002",
+                    "membershipStatus": "ACTIVE"
+                  },
+                  {
+                    "code": "ZC1235",
+                    "englishName": "My Company",
+                    "subscriptionType": "ST002",
+                    "membershipStatus": "ACTIVE"
+                  }
+                ],
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CompanySearchResponse"
+                  },
+                  "example": [
+                    {
+                      "code": "ZC1234",
+                      "englishName": "My Company",
+                      "subscriptionType": "ST002",
+                      "membershipStatus": "ACTIVE"
+                    },
+                    {
+                      "code": "ZC1235",
+                      "englishName": "My Company",
+                      "subscriptionType": "ST002",
+                      "membershipStatus": "ACTIVE"
+                    }
+                  ],
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SedexAdminSecurity": [
+            ]
+          }
+        ],
+        "operationId": "getCompaniesSearch_searchTerm",
+        "deprecated": false
+      }
+    },
+    "/companies/self/summary": {
+      "get": {
+        "summary": "Gets a company summary",
+        "description": "Org summary details for use Google and Intercom analytics/tracking",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "membershipStatus": "Active",
+                  "membershipType": "Supplier",
+                  "membershipTypeCode": "ST002",
+                  "countryCode": "GB"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AnyLoggedInUserSecurity": [
+            ]
+          }
+        ],
+        "operationId": "getCompaniesSelfSummary",
+        "deprecated": false
+      }
+    },
+    "/companies/{orgCode}": {
+      "get": {
+        "summary": "Gets a company",
+        "description": "Gets a company",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": "ZC12345",
+                  "isUpdatedByConnect": true,
+                  "englishName": "My Company",
+                  "localName": "Local company name",
+                  "address": {
+                    "line1": "Somewhere",
+                    "postCode": "AB12 3CD",
+                    "city": "London",
+                    "country": "GB"
+                  },
+                  "telephone": "07123456789",
+                  "email": "email@example.com",
+                  "smdEnrollStatus": "OPTED_IN",
+                  "subscriptionType": "ST002",
+                  "primaryIndustryClassificationCode": "ZIC1000000",
+                  "secondaryIndustryClassificationCode": "ZIC1000100"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AnyLoggedInUserSecurity": [
+            ],
+            "UserCanViewCompanySecurity": [
+            ]
+          }
+        ],
+        "operationId": "getCompanies_orgCode",
+        "deprecated": false
+      },
+      "post": {
+        "summary": "Creates a new company",
+        "description": "Creates a new company",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "englishName": "My Company",
+                "localName": "Local company name",
+                "address": {
+                  "line1": "Somewhere",
+                  "postCode": "AB12 3CD",
+                  "city": "London",
+                  "country": "GB"
+                },
+                "telephone": "07123456789",
+                "email": "email@example.com",
+                "smdEnrollStatus": "OPTED_IN",
+                "primaryIndustryClassificationCode": "ZIC1000000",
+                "secondaryIndustryClassificationCode": "ZIC1000100"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CompanyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Company created successfully",
+            "content": {
+            }
+          },
+          "409": {
+            "description": "Company already exists",
+            "content": {
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "postCompanies_orgCode",
+        "deprecated": false
+      },
+      "put": {
+        "summary": "Creates or updates a company",
+        "description": "Creates or updates a company",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "englishName": "My Company",
+                "localName": "Local company name",
+                "address": {
+                  "line1": "Somewhere",
+                  "postCode": "AB12 3CD",
+                  "city": "London",
+                  "country": "GB"
+                },
+                "telephone": "07123456789",
+                "email": "email@example.com",
+                "smdEnrollStatus": "OPTED_IN",
+                "primaryIndustryClassificationCode": "ZIC1000000",
+                "secondaryIndustryClassificationCode": "ZIC1000100"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CompanyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Company upserted successfully",
+            "content": {
+            }
+          }
+        },
+        "security": [
+          {
+            "CanPerformActionsSecurity": [
+            ]
+          }
+        ],
+        "operationId": "putCompanies_orgCode",
+        "deprecated": false
+      }
+    },
+    "/companies/{orgCode}/profile-status": {
+      "get": {
+        "summary": "Get organisation profile status",
+        "description": "Get organisation profile status",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "COMPLETE"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AnyLoggedInUserSecurity": [
+            ]
+          }
+        ],
+        "operationId": "getCompanies_orgCode_Profile_status",
+        "deprecated": false
+      }
+    },
+    "/companies/{orgCode}/size": {
+      "patch": {
+        "summary": "Update company size",
+        "description": "Update company size",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "companySize": "SMALL"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanySizeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+            }
+          }
+        },
+        "security": [
+          {
+            "CanPerformActionsSecurity": [
+            ]
+          }
+        ],
+        "operationId": "patchCompanies_orgCode_Size",
+        "deprecated": false
+      }
+    },
+    "/companies/{orgCode}/subscription": {
+      "put": {
+        "summary": "Update company subscription as admin impersonating supplier",
+        "description": "Update company subscription as admin impersonating supplier",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "subscriptionType": "ST002",
+                "membershipStatus": "ACTIVE"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanySubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Company upserted successfully",
+            "content": {
+            }
+          }
+        },
+        "security": [
+          {
+            "SedexAdminSecurity": [
+            ]
+          }
+        ],
+        "operationId": "putCompanies_orgCode_Subscription",
+        "deprecated": false
+      }
+    },
+    "/companies/{orgCode}/subsidiaries": {
+      "get": {
+        "summary": "Gets companies subsidiaries",
+        "description": "Gets companies subsidiaries",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "code": "ZC11111",
+                    "name": "Test org ZC11111"
+                  }
+                ],
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CompanySubsidiaryResponse"
+                  },
+                  "example": [
+                    {
+                      "code": "ZC11111",
+                      "name": "Test org ZC11111"
+                    }
+                  ],
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AnyLoggedInUserSecurity": [
+            ],
+            "UserCanViewCompanySecurity": [
+            ]
+          }
+        ],
+        "operationId": "getCompanies_orgCode_Subsidiaries",
+        "deprecated": false
+      }
+    },
+    "/companies/{orgCode}/subsidiaries/tree": {
+      "get": {
+        "summary": "Gets companies subsidiaries recursive tree",
+        "description": "Gets companies subsidiaries recursive tree",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "values": [
+                    {
+                      "parentOrgCode": "ZC1",
+                      "childOrgCode": "ZC10"
+                    },
+                    {
+                      "parentOrgCode": "ZC10",
+                      "childOrgCode": "ZC100"
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CompanySubsidiaryTreeResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AnyLoggedInUserSecurity": [
+            ],
+            "UserCanViewCompanySecurity": [
+            ]
+          }
+        ],
+        "operationId": "getCompanies_orgCode_SubsidiariesTree",
+        "deprecated": false
+      }
+    },
+    "/companies/{orgCode}/with-subscription": {
+      "get": {
+        "summary": "Gets a company with subscription",
+        "description": "Gets a company with subscription",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orgCode",
+            "required": true,
+            "description": "Organisation code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "company": {
+                    "code": "ZC12345",
+                    "isUpdatedByConnect": true,
+                    "englishName": "My Company",
+                    "localName": "Local company name",
+                    "address": {
+                      "line1": "Somewhere",
+                      "postCode": "AB12 3CD",
+                      "city": "London",
+                      "country": "GB"
+                    },
+                    "telephone": "07123456789",
+                    "email": "email@example.com",
+                    "smdEnrollStatus": "OPTED_IN",
+                    "subscriptionType": "ST002",
+                    "primaryIndustryClassificationCode": "ZIC1000000",
+                    "secondaryIndustryClassificationCode": "ZIC1000100"
+                  },
+                  "subscription": {
+                    "orgCode": "ZC12345",
+                    "paymentCode": "ZP123456",
+                    "nrOfSites": 1,
+                    "requestedDurationInYears": 1,
+                    "highTier": false,
+                    "endDate": "2023-07-11T00:00:00Z",
+                    "supplierPlusAvailableDate": "2023-07-11T00:00:00Z"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CompanySubscriptionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AnyLoggedInUserSecurity": [
+            ],
+            "UserCanViewCompanySecurity": [
+            ]
+          }
+        ],
+        "operationId": "getCompanies_orgCode_With_subscription",
+        "deprecated": false
+      }
+    },
+    "/company-subscriptions": {
+      "put": {
+        "summary": "Create or Update Advance Subscription data",
+        "description": "Create or Update Advance Subscription data",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "orgCode": "ZC12345",
+                "timestamp": 1689033600000,
+                "paymentCode": "ZP123456",
+                "nrOfSites": 1,
+                "requestedDurationInYears": 1,
+                "highTier": false,
+                "endDate": 1689033600000,
+                "supplierPlusAvailableDate": 1689033600000
+              },
+              "schema": {
+                "$ref": "#/components/schemas/AdvanceSubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "putCompany_subscriptions",
+        "deprecated": false
+      }
+    },
+    "/company-summaries": {
+      "post": {
+        "summary": "Get summaries of multiple companies",
+        "description": "Get summaries of multiple companies",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": [
+                "ZC1",
+                "ZC2"
+              ],
+              "schema": {
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "ZC1",
+                  "ZC2"
+                ],
+                "type": "array"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ZC1": {
+                    "code": "ZC1",
+                    "name": "Company 1",
+                    "countryCode": "GB",
+                    "membershipStatus": "ACTIVE",
+                    "subscriptionType": "ST002",
+                    "subscriberType": "Supplier"
+                  }
+                },
+                "schema": {
+                  "additionalProperties": {
+                    "properties": {
+                      "ZC1": {
+                        "$ref": "#/components/schemas/CompanySummaryResponse"
+                      }
+                    },
+                    "example": {
+                      "ZC1": {
+                        "code": "ZC1",
+                        "name": "Company 1",
+                        "countryCode": "GB",
+                        "membershipStatus": "ACTIVE",
+                        "subscriptionType": "ST002",
+                        "subscriberType": "Supplier"
+                      }
+                    },
+                    "type": "object",
+                    "required": [
+                      "ZC1"
+                    ]
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "postCompany_summaries",
+        "deprecated": false
+      }
+    },
+    "/industry-classifications": {
+      "get": {
+        "summary": "Returns a list of all industry classifications",
+        "description": "Returns a list of all industry classifications",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "description": "How many levels deep to return (0-based)"
+          },
+          {
+            "in": "query",
+            "name": "lang",
+            "required": false,
+            "description": "The language to return (defaulted to English)",
+            "schema": {
+              "$ref": "#/components/schemas/Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "code": "ZIC1000000",
+                    "name": "A - Agriculture, forestry and fishing",
+                    "depth": 0,
+                    "children": [
+                      {
+                        "code": "ZIC1000100",
+                        "name": "Crop and animal production, hunting and related service activities",
+                        "depth": 1,
+                        "children": [
+                        ]
+                      },
+                      {
+                        "code": "ZIC1000300",
+                        "name": "Fishing and aquaculture",
+                        "depth": 1,
+                        "children": [
+                        ]
+                      },
+                      {
+                        "code": "ZIC1000200",
+                        "name": "Forestry and logging",
+                        "depth": 1,
+                        "children": [
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "code": "ZIC1010000",
+                    "name": "B - Mining and quarrying",
+                    "depth": 0,
+                    "children": [
+                    ]
+                  }
+                ],
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/IndustryClassification"
+                  },
+                  "example": [
+                    {
+                      "code": "ZIC1000000",
+                      "name": "A - Agriculture, forestry and fishing",
+                      "depth": 0,
+                      "children": [
+                        {
+                          "code": "ZIC1000100",
+                          "name": "Crop and animal production, hunting and related service activities",
+                          "depth": 1,
+                          "children": [
+                          ]
+                        },
+                        {
+                          "code": "ZIC1000300",
+                          "name": "Fishing and aquaculture",
+                          "depth": 1,
+                          "children": [
+                          ]
+                        },
+                        {
+                          "code": "ZIC1000200",
+                          "name": "Forestry and logging",
+                          "depth": 1,
+                          "children": [
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "code": "ZIC1010000",
+                      "name": "B - Mining and quarrying",
+                      "depth": 0,
+                      "children": [
+                      ]
+                    }
+                  ],
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "getIndustry_classifications",
+        "deprecated": false
+      }
+    },
+    "/ping": {
+      "get": {
+        "summary": "Temporary endpoint",
+        "description": "Temporary endpoint",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "getPing",
+        "deprecated": false
+      }
+    },
+    "/subscription": {
+      "put": {
+        "summary": "Create or Update Advance Subscription data",
+        "description": "Create or Update Advance Subscription data",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "orgCode": "ZC12345",
+                "timestamp": 1689033600000,
+                "paymentCode": "ZP123456",
+                "nrOfSites": 1,
+                "requestedDurationInYears": 1,
+                "highTier": false,
+                "endDate": 1689033600000,
+                "supplierPlusAvailableDate": 1689033600000
+              },
+              "schema": {
+                "$ref": "#/components/schemas/AdvanceSubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "putSubscription",
+        "deprecated": false
+      }
+    },
+    "/subsidiary": {
+      "delete": {
+        "summary": "Delete company subsidiary",
+        "description": "Delete company subsidiary",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "parentOrgCode": "ZC000001",
+                "childOrgCode": "ZC000002"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CompanySubsidiaryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "deleteSubsidiary",
+        "deprecated": false
+      },
+      "post": {
+        "summary": "Create company subsidiary",
+        "description": "Create company subsidiary",
+        "tags": [
+          ""
+        ],
+        "parameters": [
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "parentOrgCode": "ZC000001",
+                "childOrgCode": "ZC000002"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/CompanySubsidiaryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+            }
+          }
+        },
+        "security": [
+        ],
+        "operationId": "postSubsidiary",
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CompanyResponse": {
+        "properties": {
+          "code": {
+            "example": "ZC12345",
+            "type": "string"
+          },
+          "isUpdatedByConnect": {
+            "example": true,
+            "type": "boolean"
+          },
+          "englishName": {
+            "example": "My Company",
+            "type": "string"
+          },
+          "localName": {
+            "example": "Local company name",
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "telephone": {
+            "example": "07123456789",
+            "type": "string"
+          },
+          "email": {
+            "example": "email@example.com",
+            "type": "string"
+          },
+          "smdEnrollStatus": {
+            "example": "OPTED_IN",
+            "type": "string"
+          },
+          "subscriptionType": {
+            "example": "ST002",
+            "type": "string"
+          },
+          "primaryIndustryClassificationCode": {
+            "example": "ZIC1000000",
+            "type": "string"
+          },
+          "secondaryIndustryClassificationCode": {
+            "example": "ZIC1000100",
+            "type": "string"
+          }
+        },
+        "example": {
+          "code": "ZC12345",
+          "isUpdatedByConnect": true,
+          "englishName": "My Company",
+          "localName": "Local company name",
+          "address": {
+            "line1": "Somewhere",
+            "postCode": "AB12 3CD",
+            "city": "London",
+            "country": "GB"
+          },
+          "telephone": "07123456789",
+          "email": "email@example.com",
+          "smdEnrollStatus": "OPTED_IN",
+          "subscriptionType": "ST002",
+          "primaryIndustryClassificationCode": "ZIC1000000",
+          "secondaryIndustryClassificationCode": "ZIC1000100"
+        },
+        "type": "object",
+        "required": [
+          "address",
+          "code",
+          "email",
+          "englishName"
+        ]
+      },
+      "Address": {
+        "properties": {
+          "line1": {
+            "example": "Somewhere",
+            "type": "string"
+          },
+          "postCode": {
+            "example": "AB12 3CD",
+            "type": "string"
+          },
+          "city": {
+            "example": "London",
+            "type": "string"
+          },
+          "country": {
+            "example": "GB",
+            "type": "string"
+          }
+        },
+        "example": {
+          "line1": "Somewhere",
+          "postCode": "AB12 3CD",
+          "city": "London",
+          "country": "GB"
+        },
+        "type": "object"
+      },
+      "CompanySubscriptionResponse": {
+        "properties": {
+          "company": {
+            "$ref": "#/components/schemas/CompanyResponse"
+          },
+          "subscription": {
+            "$ref": "#/components/schemas/AdvanceSubscriptionResponse"
+          }
+        },
+        "example": {
+          "company": {
+            "code": "ZC12345",
+            "isUpdatedByConnect": true,
+            "englishName": "My Company",
+            "localName": "Local company name",
+            "address": {
+              "line1": "Somewhere",
+              "postCode": "AB12 3CD",
+              "city": "London",
+              "country": "GB"
+            },
+            "telephone": "07123456789",
+            "email": "email@example.com",
+            "smdEnrollStatus": "OPTED_IN",
+            "subscriptionType": "ST002",
+            "primaryIndustryClassificationCode": "ZIC1000000",
+            "secondaryIndustryClassificationCode": "ZIC1000100"
+          },
+          "subscription": {
+            "orgCode": "ZC12345",
+            "paymentCode": "ZP123456",
+            "nrOfSites": 1,
+            "requestedDurationInYears": 1,
+            "highTier": false,
+            "endDate": "2023-07-11T00:00:00Z",
+            "supplierPlusAvailableDate": "2023-07-11T00:00:00Z"
+          }
+        },
+        "type": "object",
+        "required": [
+          "company"
+        ]
+      },
+      "AdvanceSubscriptionResponse": {
+        "properties": {
+          "orgCode": {
+            "example": "ZC12345",
+            "type": "string"
+          },
+          "paymentCode": {
+            "example": "ZP123456",
+            "type": "string"
+          },
+          "nrOfSites": {
+            "example": 1,
+            "type": "integer"
+          },
+          "requestedDurationInYears": {
+            "example": 1,
+            "type": "integer"
+          },
+          "highTier": {
+            "example": false,
+            "type": "boolean"
+          },
+          "endDate": {
+            "example": "2023-07-11T00:00:00Z",
+            "type": "string"
+          },
+          "supplierPlusAvailableDate": {
+            "example": "2023-07-11T00:00:00Z",
+            "type": "string"
+          }
+        },
+        "example": {
+          "orgCode": "ZC12345",
+          "paymentCode": "ZP123456",
+          "nrOfSites": 1,
+          "requestedDurationInYears": 1,
+          "highTier": false,
+          "endDate": "2023-07-11T00:00:00Z",
+          "supplierPlusAvailableDate": "2023-07-11T00:00:00Z"
+        },
+        "type": "object",
+        "required": [
+          "orgCode"
+        ]
+      },
+      "OrganisationSummaryResponse": {
+        "properties": {
+          "membershipStatus": {
+            "$ref": "#/components/schemas/OrganisationMembershipStatus"
+          },
+          "membershipType": {
+            "$ref": "#/components/schemas/SubscriptionType"
+          },
+          "membershipTypeCode": {
+            "example": "ST002",
+            "type": "string"
+          },
+          "countryCode": {
+            "example": "GB",
+            "type": "string"
+          }
+        },
+        "example": {
+          "membershipStatus": "Active",
+          "membershipType": "Supplier",
+          "membershipTypeCode": "ST002",
+          "countryCode": "GB"
+        },
+        "type": "object"
+      },
+      "OrganisationMembershipStatus": {
+        "example": "Active",
+        "enum": [
+          "NewUnpaid",
+          "Active",
+          "Lapsed",
+          "Deleted",
+          "RegistrationRejected"
+        ],
+        "type": "string"
+      },
+      "SubscriptionType": {
+        "example": "Supplier",
+        "enum": [
+          "Buyer",
+          "Supplier",
+          "BuyerSupplier",
+          "Auditor",
+          "NonMember"
+        ],
+        "type": "string"
+      },
+      "CompanyRequest": {
+        "properties": {
+          "englishName": {
+            "example": "My Company",
+            "type": "string"
+          },
+          "localName": {
+            "example": "Local company name",
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "telephone": {
+            "example": "07123456789",
+            "type": "string"
+          },
+          "email": {
+            "example": "email@example.com",
+            "type": "string"
+          },
+          "smdEnrollStatus": {
+            "example": "OPTED_IN",
+            "type": "string"
+          },
+          "primaryIndustryClassificationCode": {
+            "example": "ZIC1000000",
+            "type": "string"
+          },
+          "secondaryIndustryClassificationCode": {
+            "example": "ZIC1000100",
+            "type": "string"
+          }
+        },
+        "example": {
+          "englishName": "My Company",
+          "localName": "Local company name",
+          "address": {
+            "line1": "Somewhere",
+            "postCode": "AB12 3CD",
+            "city": "London",
+            "country": "GB"
+          },
+          "telephone": "07123456789",
+          "email": "email@example.com",
+          "smdEnrollStatus": "OPTED_IN",
+          "primaryIndustryClassificationCode": "ZIC1000000",
+          "secondaryIndustryClassificationCode": "ZIC1000100"
+        },
+        "type": "object",
+        "required": [
+          "address",
+          "email",
+          "englishName"
+        ]
+      },
+      "IndustryClassification": {
+        "properties": {
+          "code": {
+            "example": "ZIC1000000",
+            "type": "string"
+          },
+          "name": {
+            "example": "A - Agriculture, forestry and fishing",
+            "type": "string"
+          },
+          "depth": {
+            "example": 0,
+            "type": "integer"
+          },
+          "children": {
+            "items": {
+              "$ref": "#/components/schemas/IndustryClassification"
+            },
+            "example": [
+              {
+                "code": "ZIC1000100",
+                "name": "Crop and animal production, hunting and related service activities",
+                "depth": 1,
+                "children": [
+                ]
+              },
+              {
+                "code": "ZIC1000300",
+                "name": "Fishing and aquaculture",
+                "depth": 1,
+                "children": [
+                ]
+              },
+              {
+                "code": "ZIC1000200",
+                "name": "Forestry and logging",
+                "depth": 1,
+                "children": [
+                ]
+              }
+            ],
+            "type": "array"
+          }
+        },
+        "example": {
+          "code": "ZIC1000000",
+          "name": "A - Agriculture, forestry and fishing",
+          "depth": 0,
+          "children": [
+            {
+              "code": "ZIC1000100",
+              "name": "Crop and animal production, hunting and related service activities",
+              "depth": 1,
+              "children": [
+              ]
+            },
+            {
+              "code": "ZIC1000300",
+              "name": "Fishing and aquaculture",
+              "depth": 1,
+              "children": [
+              ]
+            },
+            {
+              "code": "ZIC1000200",
+              "name": "Forestry and logging",
+              "depth": 1,
+              "children": [
+              ]
+            }
+          ]
+        },
+        "type": "object",
+        "required": [
+          "children",
+          "code",
+          "depth",
+          "name"
+        ]
+      },
+      "Language": {
+        "example": "en",
+        "enum": [
+          "en",
+          "es",
+          "zh",
+          "tr",
+          "vi",
+          "ja"
+        ],
+        "type": "string"
+      },
+      "CompanySummaryResponse": {
+        "properties": {
+          "code": {
+            "example": "ZC1",
+            "type": "string"
+          },
+          "name": {
+            "example": "Company 1",
+            "type": "string"
+          },
+          "countryCode": {
+            "example": "GB",
+            "type": "string"
+          },
+          "membershipStatus": {
+            "example": "ACTIVE",
+            "type": "string"
+          },
+          "subscriptionType": {
+            "example": "ST002",
+            "type": "string"
+          },
+          "subscriberType": {
+            "$ref": "#/components/schemas/SubscriptionType"
+          }
+        },
+        "example": {
+          "code": "ZC1",
+          "name": "Company 1",
+          "countryCode": "GB",
+          "membershipStatus": "ACTIVE",
+          "subscriptionType": "ST002",
+          "subscriberType": "Supplier"
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "name"
+        ]
+      },
+      "ExistsResponse": {
+        "properties": {
+          "exists": {
+            "example": true,
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "exists": true
+        },
+        "type": "object",
+        "required": [
+          "exists"
+        ]
+      },
+      "CompanyProfileResponse": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ProfileStatus"
+          }
+        },
+        "example": {
+          "status": "COMPLETE"
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ]
+      },
+      "ProfileStatus": {
+        "example": "COMPLETE",
+        "enum": [
+          "COMPLETE",
+          "PENDING"
+        ],
+        "type": "string"
+      },
+      "AdvanceSubscriptionRequest": {
+        "properties": {
+          "orgCode": {
+            "example": "ZC12345",
+            "type": "string"
+          },
+          "timestamp": {
+            "example": 1689033600000,
+            "type": "integer"
+          },
+          "paymentCode": {
+            "example": "ZP123456",
+            "type": "string"
+          },
+          "nrOfSites": {
+            "example": 1,
+            "type": "integer"
+          },
+          "requestedDurationInYears": {
+            "example": 1,
+            "type": "integer"
+          },
+          "highTier": {
+            "example": false,
+            "type": "boolean"
+          },
+          "endDate": {
+            "example": 1689033600000,
+            "type": "integer"
+          },
+          "supplierPlusAvailableDate": {
+            "example": 1689033600000,
+            "type": "integer"
+          }
+        },
+        "example": {
+          "orgCode": "ZC12345",
+          "timestamp": 1689033600000,
+          "paymentCode": "ZP123456",
+          "nrOfSites": 1,
+          "requestedDurationInYears": 1,
+          "highTier": false,
+          "endDate": 1689033600000,
+          "supplierPlusAvailableDate": 1689033600000
+        },
+        "type": "object",
+        "required": [
+          "orgCode"
+        ]
+      },
+      "UpdateCompanySubscriptionRequest": {
+        "properties": {
+          "subscriptionType": {
+            "example": "ST002",
+            "type": "string"
+          },
+          "membershipStatus": {
+            "$ref": "#/components/schemas/MembershipStatus"
+          }
+        },
+        "example": {
+          "subscriptionType": "ST002",
+          "membershipStatus": "ACTIVE"
+        },
+        "type": "object",
+        "required": [
+          "membershipStatus",
+          "subscriptionType"
+        ]
+      },
+      "MembershipStatus": {
+        "example": "ACTIVE",
+        "enum": [
+          "ACTIVE",
+          "LAPSED",
+          "DELETED",
+          "NEW",
+          "REG_REJECTED"
+        ],
+        "type": "string"
+      },
+      "UpdateCompanySizeRequest": {
+        "properties": {
+          "companySize": {
+            "$ref": "#/components/schemas/CompanySize"
+          }
+        },
+        "example": {
+          "companySize": "SMALL"
+        },
+        "type": "object",
+        "required": [
+          "companySize"
+        ]
+      },
+      "CompanySize": {
+        "example": "SMALL",
+        "enum": [
+          "MICRO",
+          "SMALL",
+          "MEDIUM",
+          "LARGE"
+        ],
+        "type": "string"
+      },
+      "CompanySubsidiaryRequest": {
+        "properties": {
+          "parentOrgCode": {
+            "example": "ZC000001",
+            "type": "string"
+          },
+          "childOrgCode": {
+            "example": "ZC000002",
+            "type": "string"
+          }
+        },
+        "example": {
+          "parentOrgCode": "ZC000001",
+          "childOrgCode": "ZC000002"
+        },
+        "type": "object",
+        "required": [
+          "childOrgCode",
+          "parentOrgCode"
+        ]
+      },
+      "CompanySubsidiaryResponse": {
+        "properties": {
+          "code": {
+            "example": "ZC11111",
+            "type": "string"
+          },
+          "name": {
+            "example": "Test org ZC11111",
+            "type": "string"
+          }
+        },
+        "example": {
+          "code": "ZC11111",
+          "name": "Test org ZC11111"
+        },
+        "type": "object",
+        "required": [
+          "code"
+        ]
+      },
+      "CompanySubsidiaryTreeResponse": {
+        "properties": {
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/CompanySubsidiaryRelationResponse"
+            },
+            "example": [
+              {
+                "parentOrgCode": "ZC1",
+                "childOrgCode": "ZC10"
+              },
+              {
+                "parentOrgCode": "ZC10",
+                "childOrgCode": "ZC100"
+              }
+            ],
+            "type": "array"
+          }
+        },
+        "example": {
+          "values": [
+            {
+              "parentOrgCode": "ZC1",
+              "childOrgCode": "ZC10"
+            },
+            {
+              "parentOrgCode": "ZC10",
+              "childOrgCode": "ZC100"
+            }
+          ]
+        },
+        "type": "object",
+        "required": [
+          "values"
+        ]
+      },
+      "CompanySubsidiaryRelationResponse": {
+        "properties": {
+          "parentOrgCode": {
+            "example": "ZC1",
+            "type": "string"
+          },
+          "childOrgCode": {
+            "example": "ZC10",
+            "type": "string"
+          }
+        },
+        "example": {
+          "parentOrgCode": "ZC1",
+          "childOrgCode": "ZC10"
+        },
+        "type": "object",
+        "required": [
+          "childOrgCode",
+          "parentOrgCode"
+        ]
+      },
+      "CompanySearchResponse": {
+        "properties": {
+          "code": {
+            "example": "ZC1234",
+            "type": "string"
+          },
+          "englishName": {
+            "example": "My Company",
+            "type": "string"
+          },
+          "subscriptionType": {
+            "example": "ST002",
+            "type": "string"
+          },
+          "membershipStatus": {
+            "$ref": "#/components/schemas/MembershipStatus"
+          }
+        },
+        "example": {
+          "code": "ZC1234",
+          "englishName": "My Company",
+          "subscriptionType": "ST002",
+          "membershipStatus": "ACTIVE"
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "englishName"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "AnyLoggedInUserSecurity": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Any logged in user"
+      },
+      "UserCanViewCompanySecurity": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Can only view the user's company"
+      },
+      "CanPerformActionsSecurity": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A logged in user who has permissions to perform actions: [UpsertCompany]"
+      },
+      "SedexAdminSecurity": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Only Sedex Admins"
+      }
+    }
+  },
+  "openapi": "3.0.0"
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "code": "ZIC1000000",
+    "name": "A - Agriculture, forestry and fishing"
+  },
+  {
+    "code": "ZIC1010000",
+    "name": "B - Mining and quarrying"
+  },
+  {
+    "code": "ZIC1020000",
+    "name": "C - Manufacturing"
+  },
+  {
+    "code": "ZIC1030000",
+    "name": "D - Electricity, gas, steam and air conditioning supply"
+  },
+  {
+    "code": "ZIC1040000",
+    "name": "E - Water supply; sewerage, waste management and remediation activities"
+  },
+  {
+    "code": "ZIC1050000",
+    "name": "F - Construction"
+  },
+  {
+    "code": "ZIC1060000",
+    "name": "G - Wholesale and retail trade; repair of motor vehicles and motorcycles"
+  }

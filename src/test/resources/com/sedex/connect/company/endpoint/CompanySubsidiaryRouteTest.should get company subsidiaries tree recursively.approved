@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "parentOrgCode": "ZC0002",
+      "childOrgCode": "ZC0003"
+    },
+    {
+      "parentOrgCode": "ZC0002",
+      "childOrgCode": "ZC0004"
+    },
+    {
+      "parentOrgCode": "ZC0001",
+      "childOrgCode": "ZC0002"
+    }
+  ]
+}

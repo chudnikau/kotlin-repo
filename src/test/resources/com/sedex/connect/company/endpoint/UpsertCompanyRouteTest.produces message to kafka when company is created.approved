@@ -1,0 +1,29 @@
+{
+  "organisationCode": "ZC1234",
+  "data": {
+    "name": "My Company",
+    "contact": "email@example.com",
+    "smdNameInLocalLanguage": "Local company name",
+    "smdBusinessLicenseNumber": "",
+    "primaryIndustryClassificationCode": "ZIC1000000",
+    "secondaryIndustryClassificationCode": "ZIC1000100",
+    "addressLine1": "Somewhere",
+    "addressLine2": "",
+    "postCode": "AB12 3CD",
+    "city": "London",
+    "countryCode": "GB",
+    "billing_addressLine1": "",
+    "billing_addressLine2": "",
+    "billing_postCode": "",
+    "billing_city": "",
+    "billing_countryCode": "",
+    "telephone": "07123456789",
+    "vatNumber": "",
+    "smdBusinessLicenseExpDate": "null",
+    "smdEnrollStatus": "OPTED_IN",
+    "subscriptionType": "ST002",
+    "membershipStatus": "ACTIVE",
+    "companySize": ""
+  },
+  "lastModifiedAt": "2022-08-09T09:00:00Z"
+}

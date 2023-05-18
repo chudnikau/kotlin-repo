@@ -1,0 +1,29 @@
+apply from: rootProject.file("gradle/service.gradle")
+
+mainClassName = "com.sedex.connect.company.CompanyMainKt"
+
+dependencies {
+    implementation project(":libraries:advancecache")
+    implementation project(":libraries:company-api")
+    implementation project(":libraries:onboarding-api")
+    implementation project(":libraries:user-api")
+    implementation project(":libraries:advance-adapter-api")
+    implementation project(":libraries:i18n")
+    implementation project(":libraries:kafka")
+    implementation http4k_client
+    implementation konform
+    implementation logback
+    implementation result4k
+
+    testImplementation testingMockk
+    testImplementation project(":testing:local-environment")
+    testImplementation testFixtures(project(":libraries:i18n"))
+    testImplementation testFixtures(project(":libraries:security"))
+    testImplementation testFixtures(project(":libraries:user-api"))
+    testImplementation testFixtures(project(":libraries:kafka"))
+    testImplementation testFixtures(project(":services:advance-adapter"))
+}
+
+connectService {
+    useNewPipeline = true
+}

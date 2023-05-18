@@ -1,0 +1,44 @@
+{
+  "provider": {
+    "name": "user-backend"
+  },
+  "consumer": {
+    "name": "company-backend"
+  },
+  "interactions": [
+    {
+      "description": "a request to look up organisation contacts from company service",
+      "request": {
+        "method": "GET",
+        "path": "/organisation/contacts/ZC14567"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "contacts": [
+            {
+              "userCode": "ZU12345",
+              "firstName": "Bob",
+              "lastName": "Jones",
+              "emailAddress": "bob@jones@email.com",
+              "preferredLanguage": "en"
+            }
+          ]
+        }
+      },
+      "providerStates": [
+        {
+          "name": "STATE: user with sedex code ZU12345 exists"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.1.15"
+    }
+  }
+}

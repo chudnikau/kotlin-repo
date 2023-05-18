@@ -1,0 +1,29 @@
+{
+  "company": {
+    "code": "ZC1234",
+    "englishName": "My Company",
+    "localName": "Local company name",
+    "address": {
+      "line1": "Somewhere",
+      "postCode": "AB12 3CD",
+      "city": "London",
+      "country": "GB"
+    },
+    "telephone": "07123456789",
+    "email": "email@example.com",
+    "smdEnrollStatus": "OPTED_IN",
+    "membershipStatus": "ACTIVE",
+    "subscriptionType": "ST002",
+    "primaryIndustryClassificationCode": "ZIC1000000",
+    "secondaryIndustryClassificationCode": "ZIC1000100"
+  },
+  "subscription": {
+    "orgCode": "ZC1234",
+    "paymentCode": "ZP123456",
+    "nrOfSites": 1,
+    "requestedDurationInYears": 1,
+    "highTier": false,
+    "endDate": "2023-07-11T00:00:00Z",
+    "supplierPlusAvailableDate": "2023-07-11T00:00:00Z"
+  }
+}
